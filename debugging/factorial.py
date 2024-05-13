@@ -2,18 +2,19 @@
 import sys
 
 def factorial(n):
+    if n < 0:
+        return "Error: Factorial of a negative number is not defined."
     result = 1
-    while n > 1:
-        result *= n
-        n = n - 1
+    for i in range(2, n + 1):
+        result *= i
     return result
 
-if len(sys.argv) > 1:  # Check if an argument is provided
+if len(sys.argv) > 1:
     try:
-        input_number = int(sys.argv[1])  # Ensure the input can be converted to an integer
+        input_number = int(sys.argv[1])
         f = factorial(input_number)
         print(f)
-    except ValueError:  # Handle the case where the input is not an integer
-        print("Please provide an integer number as an argument.")
+    except ValueError:
+        print("Error: Please provide a valid integer number as an argument.")
 else:
-    print("Please provide a number as an argument.")
+    print("Usage: python3 script.py <number>")
